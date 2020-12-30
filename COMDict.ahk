@@ -37,8 +37,13 @@
     */
     invert(){
         r := new COMDict()
-        for k, v in this.dict
-            r.add(v, k)
+        for k in this.keys()
+            Try {
+                i := this.dict.item(k)
+                r.add(i, k)
+            }
+            Catch, e
+                lol := ""
         return, r
     }
 
