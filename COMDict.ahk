@@ -1,4 +1,47 @@
-﻿Class COMDict {
+﻿/**
+    * Class: COMDict
+    *   A classbased wrapper for working with com based dicts
+    *   that mind the case of its keys
+    * Attributes:
+    *   dict:       the Scripting.Dictionary COM object
+    * Methods:
+    *   __New(keyvalArr := ""):     COMDict
+    *       Creates a new instace of the dictionary class
+    *   setAnew(keyvalArr):         Void
+    *       sets the dict anew from the handed array
+    *   invert():                   COMDict
+    *       returns a new COMDict instance with inverted key/value pairs
+    *   add(key, value):            Void
+    *       adds a key value pair but will not update existing on
+    *   item(key):                  key reference
+    *       returns a specific reference to the given key and its value
+    *   __Get(key):                 key reference
+    *       convinience wrapper for the this.item(key) method
+    *       CAN HAVE UNWANTED SIDEEFFECTS from not being called
+    *   remove(key):                Void
+    *       removes a specific key from the dictionary
+    *   updateKey(key, newKey):     Void
+    *       updates a key from the dictionary
+    *   exists(key):                Boolean
+    *       checks whether given key exists within the dict
+    *   HasKey(key):                Boolean
+    *       convinience wrapper for the this.exists(key) method
+    *   count():                    Integer
+    *       retrieves the number of key/value pairs within the dict
+    *   items():                    Array
+    *       retrieves all values present within the dictionary
+    *   keys()
+    *       retrieves all keys present within the dictionary
+    *   items()
+    *       removes all key/values pairs within the dictionary
+    *   isCOMDict(subject)
+    *       checks whether the handed subject is of class COMDict
+    *   _setFromArr(keyvalArr)
+    *       adds new key/value pairs from the handed array
+    * Remarks:
+    *   this class uses the Scripting.Dictionary COM Object
+*/
+Class COMDict {
 
 
     /**
@@ -62,7 +105,7 @@
 
     /**
         * Method: item(key)
-        *   returns a specific reference to the given key
+        *   returns a specific reference to the given key and its value
         *   equivalent to ahks object[key]
         * Params:
         *   key:    the key to be referenced
@@ -87,9 +130,11 @@
         *   (or value in case you invert a map)
         *   is named like a method of this class, it would get cause unwanted sideeffects
     */
+    /*
     __Get(key){
         return, this.item(key)
     }
+    */
 
 
     /**
@@ -105,7 +150,7 @@
 
     /**
         * Method: updateKey(key, newKey)
-        *   removes a specific key from the dictionary
+        *   updates a key from the dictionary
         * Params:
         *   key:    the key to be updated
         *   newKey: the replacement key to be set
@@ -196,7 +241,7 @@
     isCOMDict(subject){
         return, (!IsObject(subject))
                 ? False
-                : subject.__Class == "COMDict"
+                : subject.base.__Class == "COMDict"
     }
 
 
