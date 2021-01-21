@@ -4,6 +4,7 @@
     *   that mind the case of its keys
     * Attributes:
     *   dict:       the Scripting.Dictionary COM object
+    *   Enum:       Class for enumeration within for loops
     * Methods:
     *   __New(keyvalArr := ""):     COMDict
     *       Creates a new instace of the dictionary class
@@ -38,6 +39,8 @@
     *       checks whether the handed subject is of class COMDict
     *   _setFromArr(keyvalArr)
     *       adds new key/value pairs from the handed array
+    *   _NewEnum()
+    *       enables enumerated though a for loop
     * Remarks:
     *   this class uses the Scripting.Dictionary COM Object
 */
@@ -263,6 +266,75 @@ Class COMDict {
                 continue
             this.add(o.key, o.val)
         }
+    }
+
+
+    /**
+        * Method: _NewEnum()
+        *   enables enumerated though a for loop
+        * Params:
+        * Return:
+        *   COMDict.Enum instance
+        * Note:
+        *   Do not store this in a var and
+        *   try to then use it for a for loop
+        *   it does not work...
+    */
+    _NewEnum(){
+        return, new COMDict.Enum(this)
+    }
+
+
+    /**
+        * Class: COMDict.Enum
+        *   provides COMDict enumerated though a for loop
+        * Attributes:
+        *   target:     the COMDict instance to enumerate
+        *   key:        the keys yet to be enumerated
+        * Methods:
+    */
+    Class Enum{
+
+        /**
+            * Method: __New(cd)
+            *   creates a new instance of COMDict.Enum
+            * Params:
+            *   cd:     the COMDict instance to enumerate
+            * Return:
+            *   The COMDict.Enum instance for a for loop
+            * Note:
+            *   Do not store this in a var and
+            *   try to then use it for a for loop
+            *   it does not work...
+        */
+        __New(cd){
+            if(!COMDict.isCOMDict(cd))
+                return, ""
+            
+            this.target := cd
+            this.keys := []
+            for k in cd.keys()
+                this.keys.push(k)
+        }
+
+        /**
+            * Method: Next(ByRef k := "", ByRef v := "")
+            *   sets k and v anew with each iteration of the for loop
+            * Params:
+            *   k:      the key to be set
+            *   v:      the value to be set
+            * Return:
+            *   true if the loop should continue
+        */
+        Next(ByRef k := "", ByRef v := ""){
+            if(!this.keys.count())
+                return, False
+            
+            k := this.keys.RemoveAt(1)
+            v := this.target.item(k)
+            return, 1
+        }
+
     }
 
 
