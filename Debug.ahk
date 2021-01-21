@@ -56,6 +56,7 @@ dcfa.Push({"key": "A", "val": "ᴀ"}
         , {"key": "Y", "val": "ʏ"}
         , {"key": "Z", "val": "ᴢ"})
 SmallCapsDict := new COMDict(dcfa)
+MsgBox, % SmallCapsDict.HasKey("count")
 
 for k in SmallCapsDict.Keys()
 	test .= k " = " SmallCapsDict[k] "`n"

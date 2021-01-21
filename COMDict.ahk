@@ -129,6 +129,20 @@
 
 
     /**
+        * Method: HasKey(key)
+        *   convinience wrapper for the this.exists(key) method
+        *   for reference, look at its documentation above
+        * Params:
+        *   key:    the key to be checked
+        * Return:
+        *   true if key exists within the dictionary
+    */
+    HasKey(key){
+        return, this.exists(key)
+    }
+
+
+    /**
         * Method: count()
         *   retrieves the number of key/value pairs within the dict
         * Return:
