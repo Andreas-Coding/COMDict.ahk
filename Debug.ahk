@@ -58,7 +58,7 @@ dcfa.Push({"key": "A", "val": "ᴀ"}
 SmallCapsDict := new COMDict(dcfa)
 
 for k in SmallCapsDict.Keys()
-	test .= k " = " SmallCapsDict.item(k) "`n"
+	test .= k " = " SmallCapsDict[k] "`n"
 MsgBox, % test
 test := ""
 inverted := SmallCapsDict.invert()

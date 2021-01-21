@@ -74,6 +74,24 @@
     }
 
 
+    /**
+        * Method: __Get(key)
+        *   convinience wrapper for the this.item(key) method
+        *   for reference, look at its documentation above
+        * Params:
+        *   key:    the key to be referenced
+        * Return:
+        *   a reference to the key value pair
+        * Note:
+        *   In case that any key within your map
+        *   (or value in case you invert a map)
+        *   is named like a method of this class, it would get cause unwanted sideeffects
+    */
+    __Get(key){
+        return, this.item(key)
+    }
+
+
     /*
         * Method: remove(key)
         *   removes a specific key from the dictionary
