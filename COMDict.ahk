@@ -1,7 +1,7 @@
 ﻿Class COMDict {
 
 
-    /*
+    /**
         * Method: __New(keyvalArr := "")
         *   Creates a new instace of the dictionary class
         * Params:
@@ -16,7 +16,7 @@
     }
 
 
-    /*
+    /**
         * Method: setAnew(keyvalArr)
         *   sets the dict anew from the handed array
         * Params:
@@ -29,7 +29,7 @@
     }
 
 
-    /*
+    /**
         * Method: invert()
         *   returns a new COMDict instance with inverted key/value pairs
         * Return:
@@ -48,7 +48,7 @@
     }
 
 
-    /*
+    /**
         * Method: add(key, value)
         *   adds a key value pair but will not update existing on
         * Params:
@@ -60,7 +60,7 @@
     }
 
 
-    /*
+    /**
         * Method: item(key)
         *   returns a specific reference to the given key
         *   equivalent to ahks object[key]
@@ -92,7 +92,7 @@
     }
 
 
-    /*
+    /**
         * Method: remove(key)
         *   removes a specific key from the dictionary
         * Params:
@@ -103,7 +103,7 @@
     }
 
 
-    /*
+    /**
         * Method: updateKey(key, newKey)
         *   removes a specific key from the dictionary
         * Params:
@@ -115,7 +115,7 @@
     }
 
 
-    /*
+    /**
         * Method: exists(key)
         *   checks whether given key exists within the dict
         * Params:
@@ -128,7 +128,7 @@
     }
 
 
-    /*
+    /**
         * Method: count()
         *   retrieves the number of key/value pairs within the dict
         * Return:
@@ -139,7 +139,7 @@
     }
 
 
-    /*
+    /**
         * Method: items()
         *   retrieves all values present within the dictionary
         * Return:
@@ -150,7 +150,7 @@
     }
 
 
-    /*
+    /**
         * Method: keys()
         *   retrieves all keys present within the dictionary
         * Return:
@@ -161,7 +161,7 @@
     }
 
 
-    /*
+    /**
         * Method: items()
         *   removes all key/values pairs within the dictionary
         *   clears the hole dict
@@ -171,7 +171,22 @@
     }
 
 
-    /*
+    /**
+        * Method: isCOMDict(subject)
+        *   checks whether the handed subject is of class COMDict
+        * Params:
+        *   subject:    the subject to check
+        * Return:
+        *   True if subject is of class COMDict
+    */
+    isCOMDict(subject){
+        return, (!IsObject(subject))
+                ? False
+                : subject.__Class == "COMDict"
+    }
+
+
+    /**
         * Method: _setFromArr(keyvalArr)
         *   adds new key/value pairs from the handed array
         * Params:
