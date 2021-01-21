@@ -61,8 +61,8 @@ for k in SmallCapsDict.Keys()
 	test .= k " = " SmallCapsDict.item(k) "`n"
 MsgBox, % test
 test := ""
-inverted := SmallCapsDict.invert().Keys()
-for k in inverted
+inverted := SmallCapsDict.invert()
+for k in inverted.Keys()
 	test .= k " = " inverted.item(k) "`n"
 MsgBox, % test
 test := ""

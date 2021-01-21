@@ -39,7 +39,7 @@
         r := new COMDict()
         for k in this.keys()
             Try {
-                i := this.dict.item(k)
+                i := this.item(k)
                 r.add(i, k)
             }
             Catch, e
